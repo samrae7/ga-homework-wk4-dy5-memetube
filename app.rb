@@ -69,7 +69,28 @@ get '/videos/:id' do
 end
 
  # EDIT
+get '/videos/:id/edit' do
+
+  @id = params[:id]
+
+  sql = "select * from videos where id = #{@id}"
+
+  @video = @db.exec(sql)
+  @title = @video.first['title']
+  @description = @video.first['description']
+  @genre = @video.first['genre']
+  @url = @video.first['url']
+
+  erb :edit
+
+end
+
  # UPDATE
+post 'videos/:id' do
+
+  'updated video'
+end
+
  # DELETE
 
 post '/videos/:id/delete' do
