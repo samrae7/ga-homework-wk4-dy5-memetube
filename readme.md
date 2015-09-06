@@ -1,9 +1,11 @@
 
+This is a simple database app using sinatra and psql.
+
+Embedded YouTube videos (the theme is classic dance films/videos) can be viewed, added, edited and deleted.
 
 
+My notes:
 
-FROM GUI
-=========
 2 ways to link up your database with the instructions written in the sublime file
 
 
