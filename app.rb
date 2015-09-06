@@ -38,13 +38,9 @@ end
  # CREATE
 post '/videos' do
 
-  @url_full = params[:url]
+  @full_url = params[:url]
 
-  url_first_capital = @url_full.scan(/[A-Z]/).first
-
-  url_full_first_capital_index = @url_full.index(url_first_capital)
-
-  @url_snippet = @url_full[url_full_first_capital_index, 11]
+  @url_snippet = url_to_snippet @full_url
 
   sql="insert into videos (title, description, genre, url) values ( '#{params[:title]}', '#{params[:description]}','#{params[:genre]}','#{@url_snippet}') returning *"
 
@@ -122,5 +118,12 @@ post '/videos/:id/delete' do
   @db.exec(sql)
 
   redirect to '/videos'
+
+end
+
+
+def url_to_snippet full_url 
+
+  url_snippet = full_url[-11, 11]
 
 end
