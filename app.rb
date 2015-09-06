@@ -21,7 +21,7 @@ end
 # INDEX
 get'/videos' do
 
-  sql = 'select * from videos'
+  sql = 'select * from videos order by id asc'
 
   @videos = @db.exec(sql)
 
@@ -38,7 +38,15 @@ end
  # CREATE
 post '/videos' do
 
-  sql="insert into videos (title, description, genre, url) values ( '#{params[:title]}', '#{params[:description]}','#{params[:genre]}','#{params[:url]}') returning *"
+  @url_full = params[:url]
+
+  url_first_capital = @url_full.scan(/[A-Z]/).first
+
+  url_full_first_capital_index = @url_full.index(url_first_capital)
+
+  @url_snippet = @url_full[url_full_first_capital_index, 11]
+
+  sql="insert into videos (title, description, genre, url) values ( '#{params[:title]}', '#{params[:description]}','#{params[:genre]}','#{@url_snippet}') returning *"
 
  @videos = @db.exec(sql)
 
@@ -53,15 +61,15 @@ get '/videos/:id' do
 
   @id = params[:id]
 
-  sql = "select url from videos where id = #{@id}"
+  sql = "select * from videos where id = #{@id}"
 
-  url_object = @db.exec(sql)
+  @video = @db.exec(sql)
 
-  url_array = url_object.map { |url| url}
-
-  url_hash = url_array[0]
-
-  @url = url_hash['url']
+  @url = @video.first['url']
+  @title = @video.first['title']
+  @description = @video.first['description']
+  @genre = @video.first['genre']
+  
 
   erb :video
 
@@ -86,9 +94,20 @@ get '/videos/:id/edit' do
 end
 
  # UPDATE
-post 'videos/:id' do
+post '/videos/:id' do
 
-  'updated video'
+  @id = params[:id]
+
+  sql= "update videos
+  set title= '#{params[:title]}', description = '#{params[:description]}',
+   genre = '#{params[:genre]}',
+   url = '#{params[:url]}' WHERE id = '#{@id}';"
+
+   @videos = @db.exec(sql)
+
+  redirect to "/videos/#{@id}"
+
+
 end
 
  # DELETE

@@ -1,4 +1,11 @@
+<h2><%= @title %></h2>
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @url %>" frameborder="0" allowfullscreen></iframe>
+
+<p>Genre: <%= @genre %></p>
+
+<p><%= @description %></p>
+
 
 <form action="/videos/<%= @id %>/edit" method ='get'>
   <button>Edit this video</button>
