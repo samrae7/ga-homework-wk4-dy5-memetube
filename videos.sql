@@ -12,7 +12,22 @@ create table videos
 
 -- Music
 INSERT INTO videos (title, description, genre, url)
-  VALUES ('Do What You Want', 'Official video', 'poprock', 'i00GDT9FuFM');
+  VALUES ('Dirty Dancing - Lover Boy ', 'Spaghetti Arms', 'Eighties', 'oxCDAs3kbAU ');
 
 INSERT INTO videos (title, description, genre, url)
-  VALUES ('End Love', 'Official video', 'poprock', 'V2fpgpanZAw');
+  VALUES ('Footloose ', 'Classic eighties movie starring Kevin Bacon', 'eighties', 'wFWDGTVYqE8');
+
+INSERT INTO videos (title, description, genre, url)
+  VALUES ('Saturday Night Fever', 'John Travolta at his finest', 'seventies', 'u1qN6gLbUMw');
+
+INSERT INTO videos (title, description, genre, url)
+  VALUES ('Singing In the Rain', 'Gene Kelly', 'fifties', 'iw40ushYAaYA');
+
+INSERT INTO videos (title, description, genre, url)
+  VALUES ('Dirty Dancing - Do You Love Me?', 'Watermelon scene', 'eighties', 'ijK0WTB_-RY');
+
+INSERT INTO videos (title, description, genre, url)
+  VALUES ('Billy Elliot ', 'We Love to Boogie dance scene', 'nineties', 'TSTw8wOlBGY');
+
+INSERT INTO videos (title, description, genre, url)
+  VALUES ('Summer Stock ', 'Gene Kelly newspaper dance', 'fifties', 'fFJrV3pI5Zs');
