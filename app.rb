@@ -93,11 +93,12 @@ end
 post '/videos/:id' do
 
   @id = params[:id]
+  @url_snippet = url_to_snippet params[:url]
 
   sql= "update videos
   set title= '#{params[:title]}', description = '#{params[:description]}',
    genre = '#{params[:genre]}',
-   url = '#{params[:url]}' WHERE id = '#{@id}';"
+   url = '#{@url_snippet}' WHERE id = '#{@id}';"
 
    @videos = @db.exec(sql)
 
