@@ -46,7 +46,9 @@ post '/videos' do
 
  @videos = @db.exec(sql)
 
- id = @videos.map{ |video| video['id']}[0]
+ binding.pry
+
+ id = @videos.first['id']
 
 redirect to "/videos/#{id}"
 

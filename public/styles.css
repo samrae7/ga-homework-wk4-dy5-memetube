@@ -49,9 +49,18 @@ h1,h2,h3,h4 {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.thumbnail-holder a, nav a {
+  color: black;
+}
+
+a:active {
+  color: #551A8B;
+}
+
 h1 {
   margin: 10px 0 3px 0px;
   font-size: 3em;
+
 }
 
 h1 a {
